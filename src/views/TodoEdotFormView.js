@@ -13,7 +13,8 @@ import {
 class TodoEditFormView extends PureComponent {
   render() {
     const selectedDate = new Date();
-    const { todo, onSetTodoProps } = this.props;
+    const { todo, onSetTodoProps, onAddTodo, onUpdateTodo, onRemoveTodo } =
+      this.props;
 
     return (
       <form noValidate>
@@ -45,11 +46,16 @@ class TodoEditFormView extends PureComponent {
           </Grid>
         </Grid>
         <Grid item>
-          <Button variant="contained" color="primary" startIcon={<SaveIcon />}>
+          <Button
+            onClick={onAddTodo}
+            variant="contained"
+            color="primary"
+            startIcon={<SaveIcon />}>
             Add
           </Button>
           &nbsp;&nbsp;
           <Button
+            onClick={onUpdateTodo}
             variant="contained"
             color="default"
             startIcon={<UpdateIcon />}>
@@ -57,6 +63,7 @@ class TodoEditFormView extends PureComponent {
           </Button>
           &nbsp;&nbsp;
           <Button
+            onClick={onRemoveTodo}
             variant="contained"
             color="secondary"
             startIcon={<DeleteIcon />}>
